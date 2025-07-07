@@ -28,16 +28,16 @@ public class AuthService {
         }
 
         String encodedPassword = passwordEncoder.encode(request.getPassword());
+
         User user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .password(encodedPassword)
                 .nickname(request.getNickname())
-                .birth(request.getBirth())
+                .birth(request.getBirth() != null ? request.getBirth() : null)
                 .phone(request.getPhone())
                 .profileImageUrl(request.getProfileImageUrl())
                 .build();
-
         userRepository.save(user);
     }
 
