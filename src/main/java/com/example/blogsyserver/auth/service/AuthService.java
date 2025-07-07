@@ -26,9 +26,12 @@ public class AuthService {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
 
         User user = User.builder()
+                .username(request.getUsername())
                 .email(request.getEmail())
                 .password(encodedPassword)
                 .nickname(request.getNickname())
+                .birth(request.getBirth())
+                .phone(request.getPhone())
                 .build();
 
         userRepository.save(user);
