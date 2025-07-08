@@ -1,7 +1,9 @@
 package com.example.blogsyserver.auth.service;
 
 import com.example.blogsyserver.auth.dto.LoginRequest;
+import com.example.blogsyserver.auth.dto.LoginResponse;
 import com.example.blogsyserver.auth.dto.SignupRequest;
+import com.example.blogsyserver.auth.jwt.JwtUtil;
 import com.example.blogsyserver.user.entity.User;
 import com.example.blogsyserver.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,7 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final JwtUtil jwtUtil;
 
     // 회원가입
     public void signup(SignupRequest request) {
@@ -38,11 +41,12 @@ public class AuthService {
                 .phone(request.getPhone())
                 .profileImageUrl(request.getProfileImageUrl())
                 .build();
+
         userRepository.save(user);
     }
 
-    //로그인
-    public String login(LoginRequest request) {
+    // 로그인
+    public LoginResponse login(LoginRequest request) {
         Optional<User> optionalUser = userRepository.findByEmail(request.getEmailOrUsername());
 
         if (optionalUser.isEmpty()) {
@@ -56,6 +60,8 @@ public class AuthService {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
-        return "로그인 성공!";
+        String token = jwtUtil.generateToken(user.getUsername());
+
+        return new LoginResponse(token);
     }
 }

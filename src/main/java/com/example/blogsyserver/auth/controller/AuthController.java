@@ -1,11 +1,12 @@
 package com.example.blogsyserver.auth.controller;
 
+import com.example.blogsyserver.auth.dto.LoginRequest;
+import com.example.blogsyserver.auth.dto.LoginResponse;
 import com.example.blogsyserver.auth.dto.SignupRequest;
 import com.example.blogsyserver.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.blogsyserver.auth.dto.LoginRequest;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -21,8 +22,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
-        String result = authService.login(request);
-        return ResponseEntity.ok(result);
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        LoginResponse response = authService.login(request);
+        return ResponseEntity.ok(response);
     }
 }
