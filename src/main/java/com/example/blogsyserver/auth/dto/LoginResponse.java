@@ -3,6 +3,7 @@ package com.example.blogsyserver.auth.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
@@ -12,4 +13,7 @@ public class LoginResponse {
     private String username;
     private String email;
     private String nickname;
+    private LocalDate birth;
+    private String phone;
+    private String profileImageUrl;
 }

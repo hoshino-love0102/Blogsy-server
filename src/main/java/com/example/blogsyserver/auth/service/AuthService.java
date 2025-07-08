@@ -66,7 +66,10 @@ public class AuthService {
                 token,
                 user.getUsername(),
                 user.getEmail(),
-                user.getNickname()
+                user.getNickname(),
+                user.getBirth(),
+                user.getPhone(),
+                user.getProfileImageUrl()
         );
     }
 }
