@@ -15,11 +15,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     public JwtAuthenticationFilter(JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
     }
-
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
+
+        String bearerToken = request.getHeader("Authorization");
+
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+            String token = bearerToken.substring(7);
+        }
         filterChain.doFilter(request, response);
     }
 }
