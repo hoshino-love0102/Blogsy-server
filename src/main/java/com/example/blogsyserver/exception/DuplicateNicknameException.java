@@ -1,7 +1,9 @@
 package com.example.blogsyserver.exception;
 
-public class DuplicateNicknameException extends RuntimeException {
-    public DuplicateNicknameException(String message) {
-        super(message);
+import com.example.blogsyserver.errorcode.AuthErrorCode;
+
+public class DuplicateNicknameException extends BusinessException {
+    public DuplicateNicknameException() {
+        super(AuthErrorCode.DUPLICATE_NICKNAME);
     }
 }

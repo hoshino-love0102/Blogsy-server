@@ -1,7 +1,9 @@
 package com.example.blogsyserver.exception;
 
-public class LoginFailException extends RuntimeException {
-    public LoginFailException(String message) {
-        super(message);
+import com.example.blogsyserver.errorcode.AuthErrorCode;
+
+public class LoginFailException extends BusinessException {
+    public LoginFailException() {
+        super(AuthErrorCode.LOGIN_FAIL);
     }
 }
