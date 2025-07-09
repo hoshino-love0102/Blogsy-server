@@ -1,5 +1,6 @@
 package com.example.blogsyserver.ai.controller;
 
+import com.example.blogsyserver.ai.dto.FeedRecommendResponse;
 import com.example.blogsyserver.ai.service.FeedRecommendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,8 @@ public class FeedRecommendController {
     private final FeedRecommendService feedRecommendService;
 
     @GetMapping("/recommend")
-    public ResponseEntity<String> recommendFeed(@RequestParam Long userId) {
-        String result = feedRecommendService.recommendFeed(userId);
-        return ResponseEntity.ok(result);
+    public ResponseEntity<FeedRecommendResponse> recommendFeed(@RequestParam Long userId) {
+        FeedRecommendResponse response = feedRecommendService.recommendFeed(userId);
+        return ResponseEntity.ok(response);
     }
 }
