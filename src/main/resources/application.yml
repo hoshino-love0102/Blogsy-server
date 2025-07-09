@@ -14,5 +14,12 @@ spring:
       hibernate.format_sql: true
 
 jwt:
-  secret: your-jwt-secret-key
-  expiration: 3600000
+  secret: my-super-secret-jwt-key-which-should-be-long
+  expiration: 36000
+
+openai:
+  api:
+    key: ${OPENAI_API_KEY}
+    embedding:
+      url: https://api.openai.com/v1/embeddings
+  model: text-embedding-3-small
