@@ -21,6 +21,9 @@ public class OpenAiEmbeddingService {
 
     private final RestTemplate restTemplate;
 
+    /**
+     * 주어진 텍스트를 OpenAI Embedding API로 변환하여 float 벡터로 반환한다.
+     */
     public float[] generateEmbedding(String text) {
         EmbeddingRequest request = new EmbeddingRequest(model, text);
 
@@ -31,10 +34,11 @@ public class OpenAiEmbeddingService {
         );
 
         if (response == null || response.getData().isEmpty()) {
-            throw new RuntimeException("Embedding API 호출 실패");
+            throw new RuntimeException("Embedding API 호출 실패 - 응답이 null 또는 빈 데이터");
         }
 
         List<Double> embeddingList = response.getData().get(0).getEmbedding();
+
         float[] embeddingArray = new float[embeddingList.size()];
         for (int i = 0; i < embeddingList.size(); i++) {
             embeddingArray[i] = embeddingList.get(i).floatValue();
