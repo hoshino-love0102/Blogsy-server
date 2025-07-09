@@ -1,5 +1,6 @@
-package com.example.blogsyserver.ai;
+package com.example.blogsyserver.ai.controller;
 
+import com.example.blogsyserver.ai.service.FeedRecommendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

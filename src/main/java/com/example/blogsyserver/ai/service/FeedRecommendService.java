@@ -1,4 +1,4 @@
-package com.example.blogsyserver.ai;
+package com.example.blogsyserver.ai.service;
 
 import org.springframework.stereotype.Service;
 
