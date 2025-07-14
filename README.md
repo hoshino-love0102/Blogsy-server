@@ -21,17 +21,21 @@ Spring Boot 기반의 블로그 백엔드 서버입니다.
 
 ## 2. 회원 관리
 
-- **회원가입**
-    - 이메일 중복 검사
-    - 닉네임 중복 검사
-    - 비밀번호 암호화 저장
-- **로그인**
-    - 이메일, 비밀번호 검증
-    - JWT 발급
-- **마이페이지**
-    - (구현 필요) 회원 정보 조회/수정
-- **비밀번호 재설정**
-    - (구현 필요) 이메일 인증 및 비밀번호 변경 로직
+### 회원가입
+
+- 엔드포인트: `POST /api/auth/signup`
+- 이메일 중복 검사
+- 닉네임 중복 검사
+- 비밀번호 암호화 (BCrypt)
+- 회원정보 저장
+- 요청 필드 (JSON):
+    - username (String)
+    - email (String)
+    - password (String)
+    - nickname (String)
+    - birth (yyyy-MM-dd)
+    - phone (String)
+    - profileImageUrl (String)
 
 ---
 
