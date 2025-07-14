@@ -37,6 +37,36 @@ Spring Boot 기반의 블로그 백엔드 서버입니다.
     - phone (String)
     - profileImageUrl (String)
 
+### 로그인
+
+- 엔드포인트: `POST /api/auth/login`
+- 이메일 또는 username 중 하나로 로그인 가능
+- 비밀번호 검증 (BCrypt)
+- JWT 발급
+- 요청 필드 (JSON):
+    - emailOrUsername (String)
+    - password (String)
+- 응답 필드 (JSON):
+    - token (JWT String)
+    - username
+    - email
+    - nickname
+    - birth
+    - phone
+    - profileImageUrl
+
+---
+
+### 마이페이지
+
+- (구현 필요) 회원 정보 조회/수정 기능
+
+---
+
+### 비밀번호 재설정
+
+- (구현 필요) 이메일 인증 및 비밀번호 변경 로직
+
 ---
 
 ## 3. 게시글 관리 (미구현)
